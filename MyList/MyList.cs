@@ -47,45 +47,33 @@ namespace MyList
 
 
         }
-        public void Remove(T itemToRemove)
+        public bool Remove(T itemToRemove)
         {
-
-            for (int i = 0; i < arrayCapacity; i++)
+ 
+            for (int i = 0; i < arrayCount; i++)
             {
                 if (array[i].Equals(itemToRemove))
                 {
-                //array[i] = 0;
-                }
-                else
-                {
-                    //Did not find matching valu
-                }
+                    arrayCount--;
+                    ShiftArray(i);
+                    return true;
 
+                }
             }
-
-
-            
-       
+            return false;
         }
 
-        public void ShiftArray()
+        public void ShiftArray(int index)
         {
+            T[] newArray = new T[arrayCapacity];
 
+            for (int i = index; i < arrayCount; i++)
+            {
+            newArray[i] = array[i + 1];
+            }
+                array = newArray;
 
         }
-
     }
-
-
-   
-
-        //static void Read()
-        //{
-       // foreach(string value in array[])
-        //    {
-
-  
-        //    }
-        //}
-    }
+}
 

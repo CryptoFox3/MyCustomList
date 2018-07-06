@@ -11,13 +11,9 @@ namespace MyList.Tests
     [TestClass()]
     public class MyListTests
     {
-        [TestMethod()]
-        public void test ()
-        {
-            Assert.Fail();
-        }
+      
         [TestMethod]
-        public void AddMultipleIndexTest()
+        public void AddSixItemsExpectLastIndexTest()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
@@ -36,7 +32,7 @@ namespace MyList.Tests
         }
 
         [TestMethod]
-        public void ArrayCountTest()
+        public void AddItemsCheckCountTest()
         {
             MyList<int> myList = new MyList<int>();
             int expectedCount = 3;
@@ -51,20 +47,83 @@ namespace MyList.Tests
         }
 
         [TestMethod]
-        public void ItemRemoveTest()
+        public void RemoveSingleItemExpectTwoCountTest()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
+            int expectedCount = 2;
+            // Act
             myList.Add(5);
             myList.Add(9);
-
-
-            // Act
+            myList.Add(4);
+            myList.Remove(9);
 
             // Assert
+            int actualCount = myList.arrayCount;
+            Assert.AreEqual(expectedCount, actualCount);
+        } 
+        [TestMethod]
+        public void RemoveItemNotInListExpectNoChangeTest()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            int expectedCount = 3;
+            // Act
+            myList.Add(5);
+            myList.Add(9);
+            myList.Add(4);
+            myList.Remove(1999);
+
+            // Assert
+            int actualCount = myList.arrayCount;
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+        [TestMethod]
+        public void RemoveItemNotInListExpectFalseTest()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            bool expected = false;
+            // Act
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            
+
+            // Assert
+            bool actual = myList.Remove(4);
+            Assert.AreEqual(expected, actual);
+        }[TestMethod]
+        public void RemoveItemInListExpectTrueTest()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            bool expected = true;
+            // Act
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
 
 
+            // Assert
+            bool actual = myList.Remove(3);
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemExpectArrayToShiftCorrectlyTest()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            int expectedCount = 9;
+            // Act
+            myList.Add(5);
+            myList.Add(9);
+            myList.Add(4);
+            myList.Remove(5);
 
+            // Assert
+            int actualCount = myList.array[0];
+            Assert.AreEqual(expectedCount, actualCount);
         }
 
     }
