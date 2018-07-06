@@ -36,9 +36,29 @@ namespace MyList
                 array = newArray;
             }
             array[arrayPosition] = itemToAdd;
-            arrayCapacity++;
+            arrayPosition++;
         }
-   }
+
+
+        public void Remove(T itemToRemove)
+        {
+
+            for (int i = 0; i < arrayCapacity; i++)
+            {
+          //      if (itemToRemove == array[i])
+            //    {
+              //      array[i] = 0;
+                //}
+            }
+
+
+
+        }
+
+    }
+
+
+   
 
         //static void Read()
         //{

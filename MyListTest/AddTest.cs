@@ -8,18 +8,22 @@ namespace MyListTest
     public class AddTest
     {
         [TestMethod]
-        public void AddOneIndexTest()
+        public void AddMultipleIndexTest()
         {
             // Arrange
-            int itemToAdd = 9;
             MyList<int> myList = new MyList<int>();
 
             // Act
-            myList.Add(itemToAdd);
+            myList.Add(8);
+            myList.Add(9);
+            myList.Add(5);
+            myList.Add(16);
+            myList.Add(98);
+            myList.Add(34);
 
             // Assert
-            Assert.AreEqual(itemToAdd, myList[0]);
-            Console.WriteLine(myList[0]);
+            Assert.AreEqual(34, myList[5]); //CHECK LAST INDEX
+            Console.WriteLine(myList[5]);
         }
 
         [TestMethod]
