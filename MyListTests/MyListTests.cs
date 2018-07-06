@@ -12,8 +12,7 @@ namespace MyList.Tests
     public class MyListTests
     {
         [TestMethod()]
-        public void 
-            ()
+        public void test ()
         {
             Assert.Fail();
         }
