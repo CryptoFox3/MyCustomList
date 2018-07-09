@@ -89,9 +89,22 @@ namespace MyList
                     stringArray = Convert.ToString(Array[i]);
             }
             return stringArray;
-
-          
         }
+
+       // public static MyList<T> operator +(MyList<T> FirstArray, MyList<T> SecondArray)
+        //{
+          //  newArray
+
+          //  return;
+        //}
+
+        
+
+
+
+
+
+
 
 
 

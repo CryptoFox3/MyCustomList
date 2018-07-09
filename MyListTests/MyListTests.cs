@@ -138,12 +138,13 @@ namespace MyList.Tests
             string actual = myList.ToString();
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void AddMultipleIntExpectMultipleStringTest()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
-            string expected = "8";
+            string expected = "7";
             string actual;
             // Act
             myList.Add(5);
@@ -151,9 +152,10 @@ namespace MyList.Tests
             myList.Add(7);
             myList.Add(8);
             // Assert
-            actual = myList[3].ToString();
+            actual = myList[2].ToString();
             Assert.AreEqual(expected, actual); //CHECK LAST INDEX
         }
+
 
         [TestMethod]
         public void RemoveItemInListExpectTrueTest()
@@ -187,6 +189,7 @@ namespace MyList.Tests
             int actualCount = myList.Array[0];
             Assert.AreEqual(expectedCount, actualCount);
         }
+
 
     }
 }
