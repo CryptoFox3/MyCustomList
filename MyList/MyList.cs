@@ -9,52 +9,56 @@ namespace MyList
     public class MyList<T>
     {
 
-        public T[] array { get; set; }
+        public T[] Array { get; set; }
         //public T[] newArray { get; set; }
-        public int arrayCount { get; set; }
-        public int arrayCapacity { get; set; }
-        public T this[int i] { get { return array[i];} set { array[i] = value; }}
+        public int ArrayCount { get; set; }
+        public int ArrayCapacity { get; set; }
+        public T this[int i] { get { return Array[i];} set { Array[i] = value; }}
+
         public MyList()
         {
-            arrayCapacity = 5;
-            arrayCount = 0;
-            array = new T[arrayCapacity];
+            ArrayCapacity = 5;
+            ArrayCount = 0;
+            Array = new T[ArrayCapacity];
         }
         
 
         public void Add(T itemToAdd)
         {
 
-            array[arrayCount] = itemToAdd;
-            arrayCount++;
+            Array[ArrayCount] = itemToAdd;
+            ArrayCount++;
             CheckCapacity();
 
         }
 
         public void CheckCapacity()
         {
-            if (arrayCount == arrayCapacity)
+            if (ArrayCount == ArrayCapacity)
             {
-                arrayCapacity += 5;
-                T[] newArray = new T[arrayCapacity];
+                ArrayCapacity += 5;
+                T[] newArray = new T[ArrayCapacity];
 
-                for (int i = 0; i < arrayCount; i++)
+                for (int i = 0; i < ArrayCount; i++)
                 {
-                    newArray[i] = array[i];
+                    newArray[i] = Array[i];
                 }
-                array = newArray;
+                Array = newArray;
             }
-
-
         }
+        public int Count()
+        {
+            return ArrayCount;
+        }
+
         public bool Remove(T itemToRemove)
         {
  
-            for (int i = 0; i < arrayCount; i++)
+            for (int i = 0; i < ArrayCount; i++)
             {
-                if (array[i].Equals(itemToRemove))
+                if (Array[i].Equals(itemToRemove))
                 {
-                    arrayCount--;
+                    ArrayCount--;
                     ShiftArray(i);
                     return true;
 
@@ -65,15 +69,33 @@ namespace MyList
 
         public void ShiftArray(int index)
         {
-            T[] newArray = new T[arrayCapacity];
+            T[] newArray = new T[ArrayCapacity];
 
-            for (int i = index; i < arrayCount; i++)
+            for (int i = index; i < ArrayCount; i++)
             {
-            newArray[i] = array[i + 1];
+            newArray[i] = Array[i + 1];
             }
-                array = newArray;
+            Array = newArray;
 
         }
+
+        public override string ToString()
+        {
+          
+            string stringArray= "";
+            if (ArrayCount != 0)
+            {
+                for (int i = 0; i < ArrayCount; i++)
+                    stringArray = Convert.ToString(Array[i]);
+            }
+            return stringArray;
+
+          
+        }
+
+
+
+
     }
 }
 
