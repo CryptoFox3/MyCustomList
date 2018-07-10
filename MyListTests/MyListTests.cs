@@ -126,7 +126,7 @@ namespace MyList.Tests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void ImputIntToStringExpectStringTest()
+        public void InputIntToStringExpectStringTest()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
@@ -143,7 +143,7 @@ namespace MyList.Tests
         public void AddMultipleIntExpectMultipleStringTest()
         {
             // Arrange
-            MyList<int> myList = new MyList<int>();
+            MyList<int> myList = new MyList<int>(); 
             string expected = "7";
             string actual;
             // Act
@@ -152,7 +152,7 @@ namespace MyList.Tests
             myList.Add(7);
             myList.Add(8);
             // Assert
-            actual = myList[2].ToString();
+            actual = myListe332[2].ToString();
             Assert.AreEqual(expected, actual); //CHECK LAST INDEX
         }
 
