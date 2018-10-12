@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyList;
 
 namespace MyListTests
 {
@@ -19,11 +20,33 @@ namespace MyListTests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TwoIntElementsOverload()
         {
-            //
-            // TODO: Add test logic here
-            //
+
+            MyList<int> myListOne = new MyList<int>();
+            MyList<int> myListTwo = new MyList<int>();
+            myListOne.Add(5);
+            myListTwo.Add(5);
+
+            MyList<int> actual = myListOne + myListTwo;
+
+            Assert.AreEqual(myListOne.Array[0], actual.Array[0]);
+            Assert.AreEqual(myListOne.Array[0], actual.Array[1]);
+        }
+
+        [TestMethod]
+        public void TwoStringElementsOverload()
+        {
+
+            MyList<string> myListOne = new MyList<string>();
+            MyList<string> myListTwo = new MyList<string>();
+            myListOne.Add("5");
+            myListTwo.Add("5");
+
+            MyList<string> actual = myListOne + myListTwo;
+
+            Assert.AreEqual(myListOne.Array[0], actual.Array[0]);
+            Assert.AreEqual(myListOne.Array[0], actual.Array[1]);
         }
     }
 }
