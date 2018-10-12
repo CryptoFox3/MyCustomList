@@ -14,22 +14,29 @@ namespace MyListTests
     {
         public MyListTestRemove()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+       
         }
 
 
         [TestMethod]
-        public void TestMethod1()
+        public void RemoveString()
         {
-            //
-            // TODO: Add test logic here
-            //
+            // Arrange
+            MyList<string> myList = new MyList<string>();
+            int expected = 2;
+            // Act
+            myList.Add("Apple");
+            myList.Add("Banana");
+            myList.Add("Pear");
+
+
+            // Assert
+            bool actual = myList.Remove("Banana");
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void RemoveItemInListExpectTrueTest()
+        public void RemoveItemInListExpectTrue()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
@@ -41,11 +48,11 @@ namespace MyListTests
 
 
             // Assert
-            bool actual = myList.Remove(3);
+            int actual = myList.ArrayCount;
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void RemoveItemExpectArrayToShiftCorrectlyTest()
+        public void RemoveItemExpectArrayToShiftCorrectly()
         {
             // Arrange
             MyList<int> myList = new MyList<int>();
@@ -76,6 +83,23 @@ namespace MyListTests
             int actualCount = myList.Array[0];
             Assert.AreEqual(expectedCount, actualCount);
         }
+
+        public void OneElementRemoveTwoElements()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            int expectedCount = 9;
+            // Act
+            myList.Add(5);
+          
+            myList.Remove(9);
+            myList.Remove(5);
+
+            // Assert
+            int actualCount = myList.Array[0];
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
 
     }
 }
