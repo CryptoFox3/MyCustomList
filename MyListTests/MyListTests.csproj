@@ -56,8 +56,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="MyListTests.cs" />
+    <Compile Include="MyListTestAdd.cs" />
+    <Compile Include="MyListTestAddOverload.cs" />
+    <Compile Include="MyListTestIteration.cs" />
+    <Compile Include="MyListTestRemove.cs" />
+    <Compile Include="MyListTestRemoveOverload.cs" />
+    <Compile Include="MyListTestToString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MyListTestZipper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
