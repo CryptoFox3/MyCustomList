@@ -2,12 +2,11 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyList;
 
 namespace MyListTests
 {
-    /// <summary>
-    /// Summary description for MyListTestToString
-    /// </summary>
+  
     [TestClass]
     public class MyListTestToString
     {
@@ -18,52 +17,48 @@ namespace MyListTests
             //
         }
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
+      
         [TestMethod]
         public void TestMethod1()
         {
             //
             // TODO: Add test logic here
             //
+        }
+
+        [TestMethod]
+        public void OneElementToString()
+        {
+            MyList<int> myList = new MyList<int>();
+            myList.Add(123);
+
+            string actual = myList.ToString();
+
+            Assert.AreEqual("123", actual);
+        }
+
+        [TestMethod]
+        public void TwoElementsToString()
+        {
+            MyList<int> myList = new MyList<int>();
+            myList.Add(123);
+            myList.Add(5);
+
+            string actual = myList.ToString();
+
+            Assert.AreEqual("123, 5", actual);
+        }
+
+        [TestMethod]
+        public void BoolToString()
+        {
+            MyList<bool> myList = new MyList<bool>();
+            myList.Add(false);
+        
+
+            string actual = myList.ToString();
+
+            Assert.AreEqual("false", actual);
         }
     }
 }
