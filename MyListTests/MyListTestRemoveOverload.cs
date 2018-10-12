@@ -6,12 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MyListTests
 {
     /// <summary>
-    /// Summary description for MyListTestRemove
+    /// Summary description for MyListTestRemoveOverload
     /// </summary>
     [TestClass]
-    public class MyListTestRemove
+    public class MyListTestRemoveOverload
     {
-        public MyListTestRemove()
+        public MyListTestRemoveOverload()
         {
             //
             // TODO: Add constructor logic here
