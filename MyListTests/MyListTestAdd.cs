@@ -152,7 +152,7 @@ namespace MyList.Tests
             myList.Add(7);
             myList.Add(8);
             // Assert
-            actual = myListe332[2].ToString();
+            actual = myList[2].ToString();
             Assert.AreEqual(expected, actual); //CHECK LAST INDEX
         }
 

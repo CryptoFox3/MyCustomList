@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,7 +83,7 @@ namespace MyList
         public override string ToString()
         {
           
-            string stringArray= "";
+            string stringArray = "";
             if (ArrayCount != 0)
             {
                 for (int i = 0; i < ArrayCount; i++)
@@ -91,14 +92,46 @@ namespace MyList
             return stringArray;
         }
 
-       // public static MyList<T> operator +(MyList<T> FirstArray, MyList<T> SecondArray)
-        //{
-          //  newArray
+        public static MyList<T> operator +(MyList<T> FirstArray, MyList<T> SecondArray)
+        {
+            MyList<T> newArray = new MyList<T>();
+            newArray = FirstArray + SecondArray;
 
-          //  return;
-        //}
+            if (FirstArray.Count() != 0) {
+                for (int i = 0; i < FirstArray.Count(); i++)
+                {
+                    newArray.Add(FirstArray[i]);
+                }
+            }
+            if (SecondArray.Count() != 0) {
+                for (int i = 0; i < SecondArray.Count(); i++)
+                {
+                    newArray.Add(SecondArray[i]);
+                }
+            }
 
-        
+            return newArray;
+        }
+
+           public static MyList<T> operator -(MyList<T> FirstArray, MyList<T> SecondArray)
+        {
+            MyList<T> newArray = new MyList<T>();
+
+            return newArray;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Array.Length; i++)
+            {
+                yield return Array[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
 
 
 
