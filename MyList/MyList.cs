@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyList
 {
-    public class MyList<T>
+    public class MyList<T> : IEnumerable
     {
 
         public T[] Array { get; set; }
@@ -60,7 +60,7 @@ namespace MyList
                 if (Array[i].Equals(itemToRemove))
                 {
                     ArrayCount--;
-                    ShiftArray(i);
+                    this.ShiftArray(i);
                     return true;
 
                 }
@@ -70,13 +70,47 @@ namespace MyList
 
         public void ShiftArray(int index)
         {
-            T[] newArray = new T[ArrayCapacity];
-
-            for (int i = index; i < ArrayCount; i++)
+            if (ArrayCount == 0)
             {
-            newArray[i] = Array[i + 1];
+            T[] newArray = new T[ArrayCount];
+                for (int i = 0; i < ArrayCount; i++)
+                {
+                    if (i != index)
+                    {
+                        newArray[i] = Array[i];
+                    }
+
+                }
+                Array = newArray;
             }
-            Array = newArray;
+            else if (index == 0 && ArrayCount == 2)
+            {
+                T[] newArray = new T[ArrayCount];
+                for (int i = 0; i < ArrayCount + 1; i++)
+                {
+                    if (i > index)
+                    {
+                        newArray[i - 1] = Array[i];
+                    }
+                }
+                Array = newArray;
+            }
+            else
+            {
+                T[] newArray = new T[ArrayCount];
+                for (int i = 0; i < ArrayCount + 1; i++)
+                {
+                    if (i < index)
+                    {
+                        newArray[i] = Array[i];
+                    }
+                    else if (i > index)
+                    {
+                        newArray[i - 1] = Array[i];
+                    }
+                }
+                Array = newArray;
+            }
 
         }
 
@@ -87,51 +121,84 @@ namespace MyList
             if (ArrayCount != 0)
             {
                 for (int i = 0; i < ArrayCount; i++)
-                    stringArray = Convert.ToString(Array[i]);
+                    if (i == ArrayCount - 1)
+                    {
+                        stringArray += Convert.ToString(Array[i]);
+                    }
+                    else
+                    {
+                        stringArray += Convert.ToString(Array[i]) + ", ";
+                    }
             }
             return stringArray;
         }
 
-        public static MyList<T> operator +(MyList<T> FirstArray, MyList<T> SecondArray)
+        public static MyList<T> operator +(MyList<T> firstList, MyList<T> secondList)
         {
             MyList<T> newArray = new MyList<T>();
-            newArray = FirstArray + SecondArray;
 
-            if (FirstArray.Count() != 0) {
-                for (int i = 0; i < FirstArray.Count(); i++)
+            if (firstList.Count() != 0) {
+                for (int i = 0; i < firstList.Count(); i++)
                 {
-                    newArray.Add(FirstArray[i]);
+                    newArray.Add(firstList[i]);
                 }
             }
-            if (SecondArray.Count() != 0) {
-                for (int i = 0; i < SecondArray.Count(); i++)
+            if (secondList.Count() != 0) {
+                for (int i = 0; i < secondList.Count(); i++)
                 {
-                    newArray.Add(SecondArray[i]);
+                    newArray.Add(secondList[i]);
                 }
             }
 
             return newArray;
         }
 
-           public static MyList<T> operator -(MyList<T> FirstArray, MyList<T> SecondArray)
+           public static MyList<T> operator -(MyList<T> firstList, MyList<T> secondList)
         {
-            MyList<T> newArray = new MyList<T>();
+            for (int i = 0; i < firstList.Count(); i++)
+            {
+                for (int j = 0; j < secondList.Count(); j++)
+                {
+                    if (firstList.Array[i].Equals(secondList.Array[j]))
+                    {
+                        firstList.Remove(secondList.Array[j]);
+                        i--;
+                        break;
+                    }
+                }
+            }
 
-            return newArray;
+            return firstList;
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public MyList<T> Zip(MyList<T> myListTwo)
         {
-            for (int i = 0; i < Array.Length; i++)
+            MyList<T> myListThree = new MyList<T>();
+            for (int i = 0; i < ArrayCount + myListTwo.Count(); i++)
+            {
+                if (ArrayCount > i)
+                {
+                    myListThree.Add(Array[i]);
+                }
+                if (myListTwo.Count() > i)
+                {
+                    myListThree.Add(myListTwo.Array[i]);
+                }
+            }
+            return myListThree;
+        }
+
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < ArrayCount; i++)
             {
                 yield return Array[i];
+
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+
 
 
 

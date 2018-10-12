@@ -6,9 +6,7 @@ using MyList;
 
 namespace MyListTests
 {
-    /// <summary>
-    /// Summary description for MyListTestsAddOverLoad
-    /// </summary>
+
     [TestClass]
     public class MyListTestAddOverload
     {

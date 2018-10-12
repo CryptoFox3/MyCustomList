@@ -2,28 +2,31 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyList;
 
 namespace MyListTests
 {
-    /// <summary>
-    /// Summary description for MyListTestRemoveOverload
-    /// </summary>
+
     [TestClass]
     public class MyListTestRemoveOverload
     {
         public MyListTestRemoveOverload()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+  
+ 
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestRemoveOverloadOneElement()
         {
-            //
-            // TODO: Add test logic here
-            //
+            MyList<int> myListOne = new MyList<int>();
+            MyList<int> myListTwo = new MyList<int>();
+            myListOne.Add(1);
+            myListTwo.Add(1);
+
+            MyList<int> actual = myListOne - myListTwo;
+
+            Assert.AreEqual(0, actual.Count());
         }
     }
 }

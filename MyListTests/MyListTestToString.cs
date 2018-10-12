@@ -17,15 +17,7 @@ namespace MyListTests
             //
         }
 
-      
-        [TestMethod]
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic here
-            //
-        }
-
+     
         [TestMethod]
         public void OneElementToString()
         {
@@ -50,6 +42,23 @@ namespace MyListTests
         }
 
         [TestMethod]
+        public void AddMultipleIntExpectMultipleStringTest()
+        {
+            // Arrange
+            MyList<int> myList = new MyList<int>();
+            string expected = "7";
+            string actual;
+            // Act
+            myList.Add(5);
+            myList.Add(6);
+            myList.Add(7);
+            myList.Add(8);
+            // Assert
+            actual = myList[2].ToString();
+            Assert.AreEqual(expected, actual); //CHECK LAST INDEX
+        }
+
+        [TestMethod]
         public void BoolToString()
         {
             MyList<bool> myList = new MyList<bool>();
@@ -58,7 +67,7 @@ namespace MyListTests
 
             string actual = myList.ToString();
 
-            Assert.AreEqual("false", actual);
+            Assert.AreEqual("False", actual);
         }
     }
 }

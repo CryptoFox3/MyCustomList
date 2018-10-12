@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyList.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class MyListTests
     {
-      
+
         [TestMethod]
         public void AddSixItemsExpectLastIndexTest()
         {
@@ -37,7 +37,7 @@ namespace MyList.Tests
             MyList<string> myList = new MyList<string>();
             string StringToAdd = "apple";
             // Act
-                myList.Add(StringToAdd);
+            myList.Add(StringToAdd);
             // Assert
             Assert.AreEqual(StringToAdd, myList[0]); //CHECK LAST INDEX
         }
@@ -73,41 +73,9 @@ namespace MyList.Tests
             // Assert
             int actualCount = myList.ArrayCount;
             Assert.AreEqual(expectedCount, actualCount);
-        } 
-
-        [TestMethod]
-        public void RemoveItemNotInListExpectNoChangeTest()
-        {
-            // Arrange
-            MyList<int> myList = new MyList<int>();
-            int expectedCount = 3;
-            // Act
-            myList.Add(5);
-            myList.Add(9);
-            myList.Add(4);
-            myList.Remove(1999);
-
-            // Assert
-            int actualCount = myList.ArrayCount;
-            Assert.AreEqual(expectedCount, actualCount);
         }
 
-        [TestMethod]
-        public void RemoveItemNotInListExpectFalseTest()
-        {
-            // Arrange
-            MyList<int> myList = new MyList<int>();
-            bool expected = false;
-            // Act
-            myList.Add(1);
-            myList.Add(2);
-            myList.Add(3);
-            
-
-            // Assert
-            bool actual = myList.Remove(4);
-            Assert.AreEqual(expected, actual);
-        }
+        
 
         [TestMethod]
         public void GetCountExpectThreeTest()
@@ -119,45 +87,18 @@ namespace MyList.Tests
             myList.Add(1);
             myList.Add(2);
             myList.Add(3);
-            
+
 
             // Assert
             int actual = myList.Count();
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
-        public void InputIntToStringExpectStringTest()
-        {
-            // Arrange
-            MyList<int> myList = new MyList<int>();
-            string expected = "8";
-            // Act
-            myList.Add(8);
-
-            // Assert
-            string actual = myList.ToString();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void AddMultipleIntExpectMultipleStringTest()
-        {
-            // Arrange
-            MyList<int> myList = new MyList<int>(); 
-            string expected = "7";
-            string actual;
-            // Act
-            myList.Add(5);
-            myList.Add(6);
-            myList.Add(7);
-            myList.Add(8);
-            // Assert
-            actual = myList[2].ToString();
-            Assert.AreEqual(expected, actual); //CHECK LAST INDEX
-        }
-
-
        
+
+        
+
+
+
 
     }
 }
