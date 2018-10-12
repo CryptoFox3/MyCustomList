@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyList;
 
 namespace MyListTests
 {
@@ -18,52 +19,79 @@ namespace MyListTests
             //
         }
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [TestMethod]
+        public void IterationOneElement()
         {
-            get
+            MyList<int> myList = new MyList<int>();
+            myList.Add(1);
+            int actual = 0;
+
+            foreach (int item in myList)
             {
-                return testContextInstance;
+                actual += item;
             }
-            set
-            {
-                testContextInstance = value;
-            }
+
+            Assert.AreEqual(actual, 1);
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        [TestMethod]
+        public void IterationTwoElements()
+        {
+            MyList<int> myList = new MyList<int>();
+            myList.Add(5);
+            myList.Add(10);
+            int actual = 0;
+
+            foreach (int item in myList)
+            {
+                actual += item;
+            }
+
+            Assert.AreEqual(actual, 15);
+        }
 
         [TestMethod]
-        public void TestMethod1()
+        public void IterationFiveElements()
         {
-            //
-            // TODO: Add test logic here
-            //
+            MyList<int> myList = new MyList<int>();
+            myList.Add(10);
+            myList.Add(20);
+            myList.Add(30);
+            myList.Add(40);
+            myList.Add(50);
+
+            int actual = 0;
+
+            foreach (int item in myList)
+            {
+                actual += item;
+            }
+
+            Assert.AreEqual(actual, 150);
+        }
+
+        [TestMethod]
+        public void IterationTenElements()
+        {
+            MyList<int> myList = new MyList<int>();
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            myList.Add(10);
+            int actual = 0;
+
+            foreach (int item in myList)
+            {
+                actual += item;
+            }
+
+            Assert.AreEqual(actual, 100);
         }
     }
 }
